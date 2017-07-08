@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 //ROOT libraries
 #include <TROOT.h>
@@ -30,40 +31,40 @@
 #include "SiLiCuts.h"
 #include "BGO.h"
 
+int nGeOrder; //Order of calibration i.e. 1 = linear.
+int nGeDets; //Total number of signals from Germanium detectors
+int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
 extern double dGeBounds[nGeCutTotal][3]; //bounds for cuts
 extern double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
-extern TH1F* ge_en_ge_cut[nGeDets][nGeCutTotal];
-extern TH1F* sili_en_ge_cut[nSiLiDets][nGeCutTotal];
-extern TH1F* ge_en_sili_cut[nGeDets][nSiLiCutTotal];
-extern TH1F* sili_en_sili_cut[nSiLiDets][nSiLiCutTotal];
+extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
+extern std::vector<std::vector<TH1F*> > sili_en_ge_cut;
+extern std::vector<std::vector<TH1F*> > ge_en_sili_cut;
+extern std::vector<std::vector<TH1F*> > sili_en_sili_cut;
 
 using namespace std;
 
-void analysis::Loop(const char* fileName)
+void analysis::Loop(const char* fileName, int nRunNum)
 {
-//   In a ROOT session, you can do:
-//      Root > .L analysis.C
-//      Root > analysis t
-//      Root > t.GetEntry(12); // Fill t data members with entry number 12
-//      Root > t.Show();       // Show values of entry 12
-//      Root > t.Show(16);     // Read and show values of entry 16
-//      Root > t.Loop();       // Loop on all entries
-//
-
-//     This is the loop skeleton where:
-//    jentry is the global entry number in the chain
-//    ientry is the entry number in the current Tree
-//  Note that the argument to GetEntry must be:
-//    jentry for TChain::GetEntry
-//    ientry for TTree::GetEntry and TBranch::GetEntry
-//
-//       To read only selected branches, Insert statements like:
-// METHOD1:
-//    fChain->SetBranchStatus("*",0);  // disable all branches
-//    fChain->SetBranchStatus("branchname",1);  // activate branchname
-// METHOD2: replace line
-//    fChain->GetEntry(jentry);       //read all branches
-//by  b_branchname->GetEntry(ientry); //read only this branch
+    cout << "In the loop" << endl;
+   //First thing: read in the coefficients for this run.
+   fstream fGeCoeff(Form("user/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   if(!fGeCoeff.is_open())
+   {
+      cout << "File did not open" << endl;
+      return;
+   }
+   cout << "We got dat file" << endl;
+   string buffer;
+   std::getline(fGeCoeff,buffer);
+   nGeOrder = std::atoi(buffer.substr(0,2).c_str()); //So this clusterfuck is due to gcc being a pain. it basically converts a substring of the string into a char to convert into an int because apparently it won't just go string to int
+   getline (fGeCoeff,buffer);
+   nGeDets = std::atoi(buffer.substr(0,2).c_str());
+   getline (fGeCoeff,buffer);
+   nGeSegments = std::atoi(buffer.substr(0,2).c_str());
+   getline (fGeCoeff,buffer); //Label Line
+   std::vector<std::vector<double> > dGeCoefficients; //Coefficients
+   std::vector<std::vector<double> > dGeCoeffRes; //Residual Coefficients
+   return;
 
    if (fChain == 0) return;
 
@@ -74,14 +75,14 @@ void analysis::Loop(const char* fileName)
    gROOT->cd();
 
    TRandom3 *randgen = new TRandom3(1); //For uniformity over bin, to remove artifacting
-   double dGeEn[nGeDets/nGeSegments] = {0};
-   double dSiLiEn[nSiLiDets] = {0};
-   double dBGO[nBGODets] = {0};
+   std::vector<double> dGeEn;
+   std::vector<double> dSiLiEn;
+   std::vector<double> dBGO;
 
    //Times
-   double dT_GeEnSeg[nGeDets] = {0};
-   double dT_GeEn[nGeDets/nGeSegments] = {0};
-   double dT_SiLiEn[nSiLiDets] = {0};
+   std::vector<double> dT_GeEnSeg;
+   std::vector<double> dT_GeEn;
+   std::vector<double> dT_SiLiEn;
 
 
    Long64_t nentries = fChain->GetEntriesFast();
@@ -141,8 +142,8 @@ void analysis::Loop(const char* fileName)
       }
 
       //Run the constraints subroutine. At this time, it does not use timing gates
-      fillHistograms(nGeCutTotal, dGeBounds, dGeEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn,true);
-      fillHistograms(nSiLiCutTotal, dSiLiBounds, dSiLiEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn, false);
+      //fillHistograms(nGeCutTotal, dGeBounds, dGeEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn,true);
+      //fillHistograms(nSiLiCutTotal, dSiLiBounds, dSiLiEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn, false);
       // if (Cut(ientry) < 0) continue;
    }
 

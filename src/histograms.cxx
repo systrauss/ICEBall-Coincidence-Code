@@ -3,6 +3,7 @@
 #include <histograms.h>
 
 //C++ libraries
+#include <vector>
 
 //ROOT libraries
 #include <TH1F.h>
@@ -18,34 +19,44 @@
 #include <SiLiCoefficients.h>
 #include <BGO.h>
 
-TH1F* ge_en_ge_cut[nGeDets][nGeCutTotal];
-TH1F* sili_en_ge_cut[nSiLiDets][nGeCutTotal];
-TH1F* ge_en_sili_cut[nGeDets][nSiLiCutTotal];
-TH1F* sili_en_sili_cut[nSiLiDets][nSiLiCutTotal];
+extern int nGeOrder; //Order of calibration i.e. 1 = linear.
+extern int nGeDets; //Total number of signals from Germanium detectors
+extern int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
+
+std::vector<std::vector<TH1F*> > ge_en_ge_cut;
+std::vector<std::vector<TH1F*> > sili_en_ge_cut;
+std::vector<std::vector<TH1F*> > ge_en_sili_cut;
+std::vector<std::vector<TH1F*> > sili_en_sili_cut;
 
 void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts)
 {
+	//Vector to make a new row
+	std::vector<TH1F*> row;
 	//Loop through and construct them all.
-	for(int i=0 ; i < nGeCuts ; i++)
+	for(int j=0 ; j < nGeDets ; j++)
 	{
-		for(int j=0 ; j < nGeDets ; j++)
+		ge_en_ge_cut.push_back(row);
+		ge_en_sili_cut.push_back(row);
+		for(int i=0 ; i < nGeCuts ; i++)
 		{
-			ge_en_ge_cut[j][i] = new TH1F(Form("ge_en_ge_cut[%i][%i]",j,i),Form("Clover_%i",j),4000,0.5,4000.5);
+			ge_en_ge_cut[j].push_back( new TH1F(Form("ge_en_ge_cut[%i][%i]",j,i),Form("Clover_%i",j),4000,0.5,4000.5));
 		}
-		for(int j=0 ; j < nSiLiDets ; j++)
+		for(int i=0 ; i < nSiLiCuts ; i++)
 		{
-			sili_en_ge_cut[j][i] = new TH1F(Form("sili_en_ge_cut[%i][%i]",j,i),Form("SiLi_%i",j+1),4000,0.5,4000.5);
+			ge_en_sili_cut[j].push_back(new TH1F(Form("sili_en_ge_cut[%i][%i]",j,i),Form("SiLi_%i",j+1),4000,0.5,4000.5));
 		}
 	}
-	for(int i=0 ; i < nSiLiCuts ; i++)
+	for(int j=0 ; j < nSiLiDets ; j++)
 	{
-		for(int j=0 ; j < nGeDets ; j++)
+		sili_en_ge_cut.push_back(row);
+		sili_en_sili_cut.push_back(row);
+		for(int i=0 ; i < nGeCuts ; i++)
 		{
-			ge_en_sili_cut[j][i] = new TH1F(Form("ge_en_sili_cut[%i][%i]",j,i),Form("Clover_%i",j),4000,0.5,4000.5);
+			sili_en_ge_cut[j].push_back(new TH1F(Form("ge_en_sili_cut[%i][%i]",j,i),Form("Clover_%i",j),4000,0.5,4000.5));
 		}
-		for(int j=0 ; j < nSiLiDets ; j++)
+		for(int i=0 ; i < nSiLiCuts ; i++)
 		{
-			sili_en_sili_cut[j][i] = new TH1F(Form("sili_en_sili_cut[%i][%i]",j,i),Form("SiLi_%i",j+1),4000,0.5,4000.5);
+			sili_en_sili_cut[j].push_back(new TH1F(Form("sili_en_sili_cut[%i][%i]",j,i),Form("SiLi_%i",j+1),4000,0.5,4000.5));
 		}
 	}
 }

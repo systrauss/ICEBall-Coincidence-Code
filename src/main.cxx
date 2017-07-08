@@ -43,10 +43,14 @@ Please check the README for more information about this code and it's purpose.
 using namespace std;
 
 extern TChain* chain;
-extern TH1F* ge_en_ge_cut[nGeDets][nGeCutTotal];
-extern TH1F* sili_en_ge_cut[nSiLiDets][nGeCutTotal];
-extern TH1F* ge_en_sili_cut[nGeDets][nSiLiCutTotal];
-extern TH1F* sili_en_sili_cut[nSiLiDets][nSiLiCutTotal];
+extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
+extern std::vector<std::vector<TH1F*> > sili_en_ge_cut;
+extern std::vector<std::vector<TH1F*> > ge_en_sili_cut;
+extern std::vector<std::vector<TH1F*> > sili_en_sili_cut;
+
+extern int nGeOrder; //Order of calibration i.e. 1 = linear.
+extern int nGeDets; //Total number of signals from Germanium detectors
+extern int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
 
 double dGeBounds[nGeCutTotal][3]; //bounds for cuts
 double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
@@ -54,11 +58,15 @@ double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
 int main(int argc, char* argv[])
 {
 	int nRunNum;
-    nRunNum = atoi(argv[1]);
+    nRunNum = atoi(argv[1]); //Run to do the cuts on
+	char* sOut = argv[2]; //file title to write to
+	char* sCut = argv[3]; //Cut file name indicator
 	makeChain(nRunNum); //From Filelist.cxx
-	defineConstraints(nGeCutTotal,dGeCuts,dGeBounds,2.0); //From constraints.cxx
-	defineConstraints(nSiLiCutTotal,dSiLiCuts,dSiLiBounds,2.0);
-	makeHistograms(nGeDets/nGeSegments,nGeCutTotal,nSiLiDets,nSiLiCutTotal); //from histograms.cxx
+	cout << "Chain made" << endl;
+	//defineConstraints(nGeCutTotal,dGeCuts,dGeBounds,2.0); //From constraints.cxx
+	//defineConstraints(nSiLiCutTotal,dSiLiCuts,dSiLiBounds,2.0);
+	//makeHistograms(nGeDets/nGeSegments,nGeCutTotal,nSiLiDets,nSiLiCutTotal); //from histograms.cxx
 	analysis ana(chain); //analysis class. Main part of code.
-	ana.Loop(Form("/scratch365/sstrauss/temp/%s_run_00%i.root",sOut,nRunNum)); //fOut is in Filelist.h
+	cout << "about to loop" << endl;
+	ana.Loop(Form("/scratch365/sstrauss/temp/%s_run_00%i.root",sOut,nRunNum),nRunNum); //fOut is in Filelist.h
 }

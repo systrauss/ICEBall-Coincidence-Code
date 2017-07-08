@@ -1,6 +1,6 @@
 #ifndef GECOEFFICIENTS_H
 #define GECOEFFICIENTS_H
-
+/*
 static const int nGeOrder = 1; //Order of calibration i.e. 1 = linear.
 static const int nGeDets = 28; //Total number of signals from Germanium detectors
 static const int nGeSegments = 4; //number of segments in a single Germanium crystal, for adding purposes
@@ -59,5 +59,5 @@ static const double dGeCoeffRes[nGeDets][7] = {{0.0002045,-2.794,3291,-1.604,788
 											   {0.0001754,-1.754,2204,-1.014,6987,-1.374,3.612},
 											   {0.0002673,-2.724,1851,-1.582,6055,-2.226,358.8},
 											   {0.000141,-1.688,2250,-0.982,6898,-1.403,0.3633},
-											   {0.0001584,-2.322,2466,-1.285,7473,-1.95,153.9}};						
+											   {0.0001584,-2.322,2466,-1.285,7473,-1.95,153.9}};	*/					
 #endif

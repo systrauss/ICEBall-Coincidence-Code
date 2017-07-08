@@ -11,7 +11,7 @@
 module load /afs/crc.nd.edu/user/n/nsl/nuclear/startup/nsl
 module load root/6.02
 root-config --version
-cd /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/Code/Cuts-Saw-Parallel-Timing
+cd /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/GitHub/ICEBall-Coincidence-Code
 echo "start task ${SGE_TASK_ID}"
 date
 ./main $SGE_TASK_ID
