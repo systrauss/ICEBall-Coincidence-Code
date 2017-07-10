@@ -15,8 +15,6 @@
 //User inputs
 #include <GeCuts.h>
 #include <SiLiCuts.h>
-#include <GeCoefficients.h>
-#include <SiLiCoefficients.h>
 #include <BGO.h>
 
 void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts);

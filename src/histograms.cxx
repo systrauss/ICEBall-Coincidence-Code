@@ -15,13 +15,15 @@
 //User inputs
 #include <GeCuts.h>
 #include <SiLiCuts.h>
-#include <GeCoefficients.h>
-#include <SiLiCoefficients.h>
 #include <BGO.h>
 
 extern int nGeOrder; //Order of calibration i.e. 1 = linear.
 extern int nGeDets; //Total number of signals from Germanium detectors
 extern int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
+
+extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
+extern int nSiLiDets; //Total number of signals from SiLi
+extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 
 std::vector<std::vector<TH1F*> > ge_en_ge_cut;
 std::vector<std::vector<TH1F*> > sili_en_ge_cut;
@@ -61,8 +63,7 @@ void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts)
 	}
 }
 
-
-void fillHistograms(int nConstraints, double dConstraints[][3], double dEnCut[], double dGeDetectors[], double dSiLiDetectors[], double dBGO[], double dGeT[], double dSiLiT[], bool GeorSiLi/*true  = ge gate, false = sili gate*/)
+void fillHistograms(int nConstraints, double dConstraints[][3], std::vector<double> dEnCut, std::vector<double> dGeDetectors, std::vector<double> dSiLiDetectors, std::vector<double> dBGO, std::vector<double> dGeT, std::vector<double> dSiLiT, bool GeorSiLi/*true  = ge gate, false = sili gate*/)
 {
 	for(int i=0; i<nConstraints ; i++)
 	{

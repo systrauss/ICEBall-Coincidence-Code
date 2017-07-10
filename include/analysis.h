@@ -18,8 +18,6 @@
 #include <TH1F.h>
 
 //User input
-#include "GeCoefficients.h"
-#include "SiLiCoefficients.h"
 #include "GeCuts.h"
 #include "SiLiCuts.h"
 

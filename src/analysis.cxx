@@ -25,15 +25,21 @@
 #include "Constraints.h"
 
 //user input
-#include "GeCoefficients.h"
-#include "SiLiCoefficients.h"
 #include "GeCuts.h"
 #include "SiLiCuts.h"
 #include "BGO.h"
 
-int nGeOrder; //Order of calibration i.e. 1 = linear.
-int nGeDets; //Total number of signals from Germanium detectors
-int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
+extern int nGeOrder; //Order of calibration i.e. 1 = linear.
+extern int nGeDets; //Total number of signals from Germanium detectors
+extern int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
+extern std::vector<std::vector<double> > dGeCoefficients; //Ge Coefficients
+extern std::vector<std::vector<double> > dGeCoeffRes; // Ge Residual Coefficients
+
+extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
+extern int nSiLiDets; //Total number of signals from SiLi
+extern int nSiLiPlace; //Start of SiLis in generalized array detectors
+extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
+
 extern double dGeBounds[nGeCutTotal][3]; //bounds for cuts
 extern double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
 extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
@@ -45,27 +51,6 @@ using namespace std;
 
 void analysis::Loop(const char* fileName, int nRunNum)
 {
-    cout << "In the loop" << endl;
-   //First thing: read in the coefficients for this run.
-   fstream fGeCoeff(Form("user/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
-   if(!fGeCoeff.is_open())
-   {
-      cout << "File did not open" << endl;
-      return;
-   }
-   cout << "We got dat file" << endl;
-   string buffer;
-   std::getline(fGeCoeff,buffer);
-   nGeOrder = std::atoi(buffer.substr(0,2).c_str()); //So this clusterfuck is due to gcc being a pain. it basically converts a substring of the string into a char to convert into an int because apparently it won't just go string to int
-   getline (fGeCoeff,buffer);
-   nGeDets = std::atoi(buffer.substr(0,2).c_str());
-   getline (fGeCoeff,buffer);
-   nGeSegments = std::atoi(buffer.substr(0,2).c_str());
-   getline (fGeCoeff,buffer); //Label Line
-   std::vector<std::vector<double> > dGeCoefficients; //Coefficients
-   std::vector<std::vector<double> > dGeCoeffRes; //Residual Coefficients
-   return;
-
    if (fChain == 0) return;
 
    //File to write out to
@@ -83,6 +68,26 @@ void analysis::Loop(const char* fileName, int nRunNum)
    std::vector<double> dT_GeEnSeg;
    std::vector<double> dT_GeEn;
    std::vector<double> dT_SiLiEn;
+
+   //Ge vector
+   for(int i=0; i<nGeDets/nGeSegments;i++)
+   {
+       dGeEn.push_back(0);
+       dT_GeEn.push_back(0);
+   }
+   for(int i=0; i<nGeDets;i++)
+   {
+       dT_GeEnSeg.push_back(0);
+   }
+   for(int i=0; i<nSiLiDets;i++)
+   {
+       dSiLiEn.push_back(0);
+       dT_SiLiEn.push_back(0);
+   }
+   for(int i=0; i<nBGODets;i++)
+   {
+       dBGO.push_back(0);
+   }
 
 
    Long64_t nentries = fChain->GetEntriesFast();

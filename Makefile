@@ -13,7 +13,7 @@ INCLUDES := -Iinclude -Iuser
 #folder with all the source files
 SOURCES := src
 #source files
-FILES := Constraints.cxx histograms.cxx Filelist.cxx analysis.cxx main.cxx
+FILES := Coefficients.cxx Constraints.cxx histograms.cxx Filelist.cxx analysis.cxx main.cxx
 #this is the executable name
 EXECUTABLES := main
 #libraries
