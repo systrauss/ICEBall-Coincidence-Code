@@ -13,6 +13,10 @@
 
 using namespace std;
 
+int nBGODets; //Total number of signals from BGO detectors
+int nBGOPlace; //Start of BGOs in generalized array
+std::vector<double> dBGOThreshold;
+
 int defineConstraints(char* cCuts, std::vector<std::vector<double> > &dBounds)
 {
    //First thing: read in the cuts for this run.
@@ -42,4 +46,27 @@ int defineConstraints(char* cCuts, std::vector<std::vector<double> > &dBounds)
    }
    fCuts.close();
    return nConstraints;
+}
+
+void defineBGO()
+{
+    //First thing: read in the cuts for this run.
+   fstream fBGO("user/BGO.dat"); //Coefficient File
+   if(!fBGO.is_open())
+   {
+      cout << "BGO file did not open" << endl;
+   }
+   string buffer;
+   std::getline(fBGO,buffer);
+   nBGODets = std::atoi(buffer.substr(0,buffer.find_first_of(' ',0)).c_str()); //So this clusterfuck is due to gcc being a pain. it basically converts a substring of the string into a char to convert into an int because apparently it won't just go string to int
+   std::getline(fBGO,buffer);
+   nBGOPlace = std::atoi(buffer.substr(0,buffer.find_first_of(' ',0)).c_str()); 
+   std::getline(fBGO,buffer); //Label Line
+   //Okay, here, we get into the nitty gritty
+   for(int i=0; i<nBGODets;i++) //Loop through all the constraints
+   {
+    std::getline(fBGO,buffer); //Line with cuts on it.
+    dBGOThreshold.push_back(std::atof(buffer.c_str())); //read in ith detector threshold
+   }
+   fBGO.close();
 }

@@ -7,6 +7,8 @@
 #define EXTERNAL
 #endif
 
+void defineGeCoeff();
+
 void defineGeCoeff(int nRunNum);
 
 void defineSiLiCoeff(int nRunNum);

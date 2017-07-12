@@ -18,17 +18,17 @@ int nGeDets; //Total number of signals from Germanium detectors
 int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
 std::vector<std::vector<double> > dGeCoefficients; //Coefficients
 std::vector<std::vector<double> > dGeCoeffRes; //Residual Coefficients
+std::vector<std::vector<double> > dGeRunCorr; //Run Correction Coefficients
 
 int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 int nSiLiDets; //Total number of signals from SiLi
 int nSiLiPlace; //Start of SiLis in generalized array detectors
 std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
 
-
-void defineGeCoeff(int nRunNum)
+void defineGeCoeff() //Get Ge coefficients. Does not include run-by-run corrections
 {
    //First thing: read in the coefficients for this run.
-   fstream fCoeff(Form("user/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   fstream fCoeff("user/GeCoefficients.dat"); //Coefficient File, before run-by-run corrections
    if(!fCoeff.is_open())
    {
       cout << "Ge file did not open" << endl;
@@ -62,6 +62,32 @@ void defineGeCoeff(int nRunNum)
       for(int j=0; j< 7; j++) //Loop through the residual coefficients. Currently hardcoded in.
       {
          dGeCoeffRes[i].push_back(std::atof(buffer.substr(0,buffer.find_first_of(',',0)).c_str())); //read in jth coefficient
+         buffer = buffer.substr(buffer.find_first_of(',',0)+1,buffer.find_first_of('\n',0)); //make a substring of the rest of the coefficients
+      }
+   }
+   fCoeff.close(); //Close the coefficients file
+}
+
+void defineGeCoeff(int nRunNum) //Ge Coefficients for the run based corrections.
+{
+   //First thing: read in the coefficients for this run.
+   fstream fCoeff(Form("user/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   if(!fCoeff.is_open())
+   {
+      cout << "Ge run file did not open" << endl;
+      return;
+   }
+   string buffer;
+   std::getline(fCoeff,buffer); //Label
+   std::vector<double> row; //Row for adding a level in.
+   //Okay, here, we get into the nitty gritty
+   for(int i=0; i<nGeDets;i++) //Loop through all the detectors
+   {
+      getline (fCoeff,buffer); //Line with coefficients on it.
+      dGeRunCorr.push_back(row); //Put a new row in for the detector
+      for(int j=0; j<= 1; j++) //Loop through the coefficients, assuming linear 
+      {
+         dGeRunCorr[i].push_back(std::atof(buffer.substr(0,buffer.find_first_of(',',0)).c_str())); //read in jth coefficient
          buffer = buffer.substr(buffer.find_first_of(',',0)+1,buffer.find_first_of('\n',0)); //make a substring of the rest of the coefficients
       }
    }

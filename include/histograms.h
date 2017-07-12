@@ -15,9 +15,6 @@
 #include <TString.h>
 #include <TFile.h>
 
-//User inputs
-#include <BGO.h>
-
 void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts);
 void fillHistograms(int nConstraints, std::vector<std::vector<double> >dConstraints, std::vector<double> dEnCut, std::vector<double> dGeDetectors, std::vector<double> dSiLiDetectors, std::vector<double> dBGO, std::vector<double> dGeT, std::vector<double> dSiLiT, bool GeorSiLi);
 void writeHistToFile(TFile* fOut);

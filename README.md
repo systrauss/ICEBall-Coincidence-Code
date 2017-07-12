@@ -1,6 +1,6 @@
 # ICEBall-Coincidence-Code
 
-This code is going to be changing a lot.
+This code is going to be changing a lot. Currently this is a log of upload changes. there will be a comprehensive readme and explanation when the code is complete
 
 Almost everything in the user folder will get shifted to work without needing to recompile the script every time. 
 
@@ -20,5 +20,18 @@ After these two things, this should be ready to merge with the main branch befor
 Added the cuts section. A good note is that vectors need to be passed in as an address in the case that i need to get vector results back. Made the Filepaths etc. a *.dat file, for quick adjustment.
 
 Still to do:
--BGO.h to BGO.dat
--Timing flags
+1. BGO.h to BGO.dat
+2. Timing flags
+
+### 7/12/2017
+~~Totally lists the peaks wrong now (as lower bound). -_-~~ fixed
+
+Also, maybe don't declare variables twice, Sabrina. Huh?
+
+Still to do:
+1. ~~Timing flags~~ Done, current bounds: regular is -0.3 to 0.3, background is 0.3 to 0.9
+
+~~Also need to adjust Ge coefficients. Wanted a correction term in the files on top of the calibration. So, maybe a general calibration read in for the Ge, then the correction?~~Currently set up with 0,1 as coefficients (so y=x)
+Actually, we need to get those coefficients...will use run 18 as a test case.
+
+*Should add a redundancy check to make sure y=x is default if run file doesn't open/exist*

@@ -11,4 +11,6 @@
 
 int defineConstraints(char* cCuts, std::vector<std::vector<double> > &dBounds);
 
+void defineBGO();
+
 #endif

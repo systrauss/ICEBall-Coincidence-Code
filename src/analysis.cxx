@@ -24,25 +24,30 @@
 #include "histograms.h"
 #include "Constraints.h"
 
-//user input
-#include "BGO.h"
-
+//From Coefficients.cxx
 extern int nGeOrder; //Order of calibration i.e. 1 = linear.
 extern int nGeDets; //Total number of signals from Germanium detectors
 extern int nGeSegments; //number of segments in a single Germanium crystal, for adding purposes
 extern std::vector<std::vector<double> > dGeCoefficients; //Ge Coefficients
 extern std::vector<std::vector<double> > dGeCoeffRes; // Ge Residual Coefficients
+extern std::vector<std::vector<double> > dGeRunCorr; //Run Correction Coefficients
 
 extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
 
+//From Constraints.cxx
 extern std::vector<std::vector<double> > dGeBounds; //bounds for cuts
 extern std::vector<std::vector<double> > dSiLiBounds; //bounds for cuts
 extern int nGeConstraints;
 extern int nSiLiConstraints;
 
+extern int nBGODets; //Total number of signals from BGO detectors
+extern int nBGOPlace; //Start of BGOs in generalized array
+extern std::vector<double> dBGOThreshold;
+
+//From histograms.cxx
 extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
 extern std::vector<std::vector<TH1F*> > sili_en_ge_cut;
 extern std::vector<std::vector<TH1F*> > ge_en_sili_cut;
@@ -118,6 +123,7 @@ void analysis::Loop(const char* fileName, int nRunNum)
          if(eneC > dGeCorrection[i][2]) eneC = eneC - dGeCorrection[i][0]+eneC*dGeCorrection[i][1];*/
           //This is the residual sawtooth function.
          eneC = eneC+dGeCoeffRes[i][0]*dADC+dGeCoeffRes[i][1]*TMath::Erfc((dADC-dGeCoeffRes[i][2])/dGeCoeffRes[i][6])+dGeCoeffRes[i][3]*TMath::Erf((dADC-dGeCoeffRes[i][2])/dGeCoeffRes[i][6])*TMath::Erfc((dADC-dGeCoeffRes[i][4])/dGeCoeffRes[i][6])+dGeCoeffRes[i][5]*TMath::Erf((dADC-dGeCoeffRes[i][4])/dGeCoeffRes[i][6]);
+         eneC = dGeRunCorr[i][0]+dGeRunCorr[i][0]*eneC; //Run correction factor
          if(i%nGeSegments!=0 && i!=14 && i!=15) 
          {
             dGeEn[i/nGeSegments] = dGeEn[i/nGeSegments]+eneC; //Add energies
@@ -137,7 +143,6 @@ void analysis::Loop(const char* fileName, int nRunNum)
             dSiLiEn[i] = dSiLiEn[i] + dSiLiCoefficients[i][j]*pow(dADC,j);
          }
       }
-      //BGOs
       for(int i=0 ; i < nBGODets ; i++)
       {
          dBGO[i] = ene[i+nBGOPlace];
