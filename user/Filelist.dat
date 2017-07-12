@@ -1,0 +1,7 @@
+//Change sFilepath to change the location the program looks for the rootfiles
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/
+//Change sTree for the program to look at a different tree in the files.
+t2
+//Formatting for the beginning and end of the rootfile name
+run00
+.root

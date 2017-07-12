@@ -13,8 +13,6 @@
 #include <TObject.h>
 
 //User inputs
-#include <GeCuts.h>
-#include <SiLiCuts.h>
 #include <BGO.h>
 
 extern int nGeOrder; //Order of calibration i.e. 1 = linear.
@@ -24,6 +22,11 @@ extern int nGeSegments; //number of segments in a single Germanium crystal, for 
 extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
+
+extern std::vector<std::vector<double> > dGeBounds; //bounds for cuts
+extern std::vector<std::vector<double> > dSiLiBounds; //bounds for cuts
+extern int nGeConstraints;
+extern int nSiLiConstraints;
 
 std::vector<std::vector<TH1F*> > ge_en_ge_cut;
 std::vector<std::vector<TH1F*> > sili_en_ge_cut;
@@ -63,7 +66,7 @@ void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts)
 	}
 }
 
-void fillHistograms(int nConstraints, double dConstraints[][3], std::vector<double> dEnCut, std::vector<double> dGeDetectors, std::vector<double> dSiLiDetectors, std::vector<double> dBGO, std::vector<double> dGeT, std::vector<double> dSiLiT, bool GeorSiLi/*true  = ge gate, false = sili gate*/)
+void fillHistograms(int nConstraints, std::vector<std::vector<double> >dConstraints, std::vector<double> dEnCut, std::vector<double> dGeDetectors, std::vector<double> dSiLiDetectors, std::vector<double> dBGO, std::vector<double> dGeT, std::vector<double> dSiLiT, bool GeorSiLi/*true  = ge gate, false = sili gate*/)
 {
 	for(int i=0; i<nConstraints ; i++)
 	{
@@ -106,11 +109,11 @@ void fillHistograms(int nConstraints, double dConstraints[][3], std::vector<doub
 
 void writeHistToFile(TFile* fOut)
 {
-	for(int i=0; i<nGeCutTotal ; i++)
+	for(int i=0; i<nGeConstraints ; i++)
 	{
 		fOut->cd();
-		gDirectory->mkdir(Form("Ge Cut Detector %i, Peak %f",(int)dGeCuts[i][0],dGeCuts[i][1]));
-		fOut->cd(Form("Ge Cut Detector %i, Peak %f",(int)dGeCuts[i][0],dGeCuts[i][1]));
+		gDirectory->mkdir(Form("Ge Cut Detector %i, Peak %f",(int)dGeBounds[i][0],dGeBounds[i][1]));
+		fOut->cd(Form("Ge Cut Detector %i, Peak %f",(int)dGeBounds[i][0],dGeBounds[i][1]));
 		for(int j=0; j<nGeDets/nGeSegments ; j++)
 		{
 			ge_en_ge_cut[j][i]->Write(Form("Clover_%i",j),TObject::kOverwrite,1E8);
@@ -120,11 +123,11 @@ void writeHistToFile(TFile* fOut)
 			sili_en_ge_cut[j][i]->Write(Form("SiLi_%i",j+1),TObject::kOverwrite,1E8);
 		}
 	}
-	for(int i=0; i<nSiLiCutTotal ; i++)
+	for(int i=0; i<nSiLiConstraints ; i++)
 	{
 		fOut->cd();
-		gDirectory->mkdir(Form("SiLi Cut Detector %i, Peak %f",(int)dSiLiCuts[i][0]+1,dSiLiCuts[i][1]));
-		fOut->cd(Form("SiLi Cut Detector %i, Peak %f",(int)dSiLiCuts[i][0]+1,dSiLiCuts[i][1]));
+		gDirectory->mkdir(Form("SiLi Cut Detector %i, Peak %f",(int)dSiLiBounds[i][0]+1,dSiLiBounds[i][1]));
+		fOut->cd(Form("SiLi Cut Detector %i, Peak %f",(int)dSiLiBounds[i][0]+1,dSiLiBounds[i][1]));
 		for(int j=0; j<nGeDets/nGeSegments ; j++)
 		{
 			ge_en_sili_cut[j][i]->Write(Form("Clover_%i",j),TObject::kOverwrite,1E8);

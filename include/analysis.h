@@ -17,10 +17,6 @@
 #include <TFile.h>
 #include <TH1F.h>
 
-//User input
-#include "GeCuts.h"
-#include "SiLiCuts.h"
-
 // Header file for the classes stored in the TTree if any.
 
 // Fixed size dimensions of array or collections stored in the TTree if any.

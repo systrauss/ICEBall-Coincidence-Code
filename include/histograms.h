@@ -7,18 +7,19 @@
 #define EXTERNAL
 #endif
 
+//C++ libraries
+#include <vector>
+
 //ROOT libraries
 #include <TH1F.h>
 #include <TString.h>
 #include <TFile.h>
 
 //User inputs
-#include <GeCuts.h>
-#include <SiLiCuts.h>
 #include <BGO.h>
 
 void makeHistograms(int nGeDets, int nGeCuts, int nSiLiDets, int nSiLiCuts);
-void fillHistograms(int nConstraints, double dConstraints[][3], double dEnCut[], double dGeDetectors[], double dSiLiDetectors[], double dBGO[], double dGeT[], double dSiLiT[], bool GeorSiLi);
+void fillHistograms(int nConstraints, std::vector<std::vector<double> >dConstraints, std::vector<double> dEnCut, std::vector<double> dGeDetectors, std::vector<double> dSiLiDetectors, std::vector<double> dBGO, std::vector<double> dGeT, std::vector<double> dSiLiT, bool GeorSiLi);
 void writeHistToFile(TFile* fOut);
 
 #endif

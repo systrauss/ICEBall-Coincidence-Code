@@ -7,6 +7,8 @@
 #define EXTERNAL
 #endif
 
-void defineConstraints(int nPeak, const double dInput[][3], double dOutput[][3], double dSigma);
+#include <vector>
+
+int defineConstraints(char* cCuts, std::vector<std::vector<double> > &dBounds);
 
 #endif

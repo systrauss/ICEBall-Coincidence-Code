@@ -33,13 +33,15 @@ Please check the README for more information about this code and it's purpose.
 #include "Constraints.h"
 #include "histograms.h"
 #include "Coefficients.h"
-
-//User input files
 #include "Filelist.h"
-#include "GeCuts.h"
-#include "SiLiCuts.h"
 
 using namespace std;
+
+//File path info
+extern std::string sFilepath;
+extern std::string sTree;
+extern std::string sRun;
+extern std::string sFType;
 
 extern TChain* chain;
 extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
@@ -58,21 +60,27 @@ extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
 
-double dGeBounds[nGeCutTotal][3]; //bounds for cuts
-double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
+std::vector<std::vector<double> > dGeBounds; //bounds for cuts
+std::vector<std::vector<double> > dSiLiBounds; //bounds for cuts
+int nGeConstraints;
+int nSiLiConstraints;
 
 int main(int argc, char* argv[])
 {
+	char buffer[50];
 	int nRunNum;
     nRunNum = atoi(argv[1]); //Run to do the cuts on
 	char* sOut = argv[2]; //file title to write to
 	char* sCut = argv[3]; //Cut file name indicator
+	readPaths();
 	makeChain(nRunNum); //From Filelist.cxx
 	defineGeCoeff(nRunNum);
 	defineSiLiCoeff(nRunNum);
-	defineConstraints(nGeCutTotal,dGeCuts,dGeBounds,2.0); //From constraints.cxx
-	defineConstraints(nSiLiCutTotal,dSiLiCuts,dSiLiBounds,2.0);
-	makeHistograms(nGeDets/nGeSegments,nGeCutTotal,nSiLiDets,nSiLiCutTotal); //from histograms.cxx
+	sprintf(buffer,"GeCut_%s.dat",sCut); //File name to input
+	nGeConstraints = defineConstraints(buffer,dGeBounds); //From constraints.cxx
+	sprintf(buffer,"SiLiCut_%s.dat",sCut); //File name to input
+	nSiLiConstraints = defineConstraints(buffer,dSiLiBounds);
+	makeHistograms(nGeDets/nGeSegments,nGeConstraints,nSiLiDets,nSiLiConstraints); //from histograms.cxx
 	analysis ana(chain); //analysis class. Main part of code.
 	ana.Loop(Form("/scratch365/sstrauss/temp/%s_run_00%i.root",sOut,nRunNum),nRunNum); //fOut is in Filelist.h
 }

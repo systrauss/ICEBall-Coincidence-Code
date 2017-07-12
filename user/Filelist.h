@@ -25,18 +25,6 @@
 #endif
 
 void makeChain(int nRunNum);
-
-//Output file name - switching to read as input
-//static const char* sOut = "Cut_GS_Timing";
-
-//Change sFilepath to change the location the program looks for the rootfiles
-static const char* sFilepath = "/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/";
-
-//Change sTree for the program to look at a different tree in the files.
-static const char* sTree = "t2";
-
-//Formatting for the beginning and end of the rootfile name
-static const char* sRun = "run00";
-static const char* sFType = ".root";
+void readPaths();
 
 #endif

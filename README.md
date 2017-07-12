@@ -15,3 +15,10 @@ Finished the coefficient section. It now reads in the coefficients from text fil
 Also need to add a similar function for the BGOs, even though those are pretty useless right now. 
 
 After these two things, this should be ready to merge with the main branch before adding in timing flags and a similar system for cuts.
+
+### 7/11/2017
+Added the cuts section. A good note is that vectors need to be passed in as an address in the case that i need to get vector results back. Made the Filepaths etc. a *.dat file, for quick adjustment.
+
+Still to do:
+-BGO.h to BGO.dat
+-Timing flags

@@ -25,8 +25,6 @@
 #include "Constraints.h"
 
 //user input
-#include "GeCuts.h"
-#include "SiLiCuts.h"
 #include "BGO.h"
 
 extern int nGeOrder; //Order of calibration i.e. 1 = linear.
@@ -40,8 +38,11 @@ extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
 
-extern double dGeBounds[nGeCutTotal][3]; //bounds for cuts
-extern double dSiLiBounds[nSiLiCutTotal][3]; //bounds for cuts
+extern std::vector<std::vector<double> > dGeBounds; //bounds for cuts
+extern std::vector<std::vector<double> > dSiLiBounds; //bounds for cuts
+extern int nGeConstraints;
+extern int nSiLiConstraints;
+
 extern std::vector<std::vector<TH1F*> > ge_en_ge_cut;
 extern std::vector<std::vector<TH1F*> > sili_en_ge_cut;
 extern std::vector<std::vector<TH1F*> > ge_en_sili_cut;
@@ -52,9 +53,6 @@ using namespace std;
 void analysis::Loop(const char* fileName, int nRunNum)
 {
    if (fChain == 0) return;
-
-   //File to write out to
-   TFile* fOut = new TFile(fileName,"RECREATE");
 
    //Don't keep writing to fOut, so switch to the "user" space instead
    gROOT->cd();
@@ -88,7 +86,6 @@ void analysis::Loop(const char* fileName, int nRunNum)
    {
        dBGO.push_back(0);
    }
-
 
    Long64_t nentries = fChain->GetEntriesFast();
 
@@ -146,11 +143,14 @@ void analysis::Loop(const char* fileName, int nRunNum)
          dBGO[i] = ene[i+nBGOPlace];
       }
 
-      //Run the constraints subroutine. At this time, it does not use timing gates
-      //fillHistograms(nGeCutTotal, dGeBounds, dGeEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn,true);
-      //fillHistograms(nSiLiCutTotal, dSiLiBounds, dSiLiEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn, false);
-      // if (Cut(ientry) < 0) continue;
+      //Run the constraints subroutine. At this time, it does use timing gates
+      fillHistograms(nGeConstraints, dGeBounds, dGeEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn,true);
+      fillHistograms(nSiLiConstraints, dSiLiBounds, dSiLiEn, dGeEn, dSiLiEn, dBGO, dT_GeEn, dT_SiLiEn, false);
+      if (Cut(ientry) < 0) continue;
    }
+
+   //File to write out to
+   TFile* fOut = new TFile(fileName,"RECREATE");
 
    //write to file
    fOut->cd();
