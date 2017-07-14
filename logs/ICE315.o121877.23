@@ -1,0 +1,10 @@
+ModuleCmd_Load.c(208):ERROR:105: Unable to locate a modulefile for 'radware'
+6.02/05
+start task 23
+Fri Jul 14 10:22:35 EDT 2017
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0023-00.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0023-01.root	0
+SiLi run file did not open, setting correction to y=x
+...ended task 23
+Fri Jul 14 10:23:33 EDT 2017
+ModuleCmd_Load.c(208):ERROR:105: Unable to locate a modulefile for 'radware'

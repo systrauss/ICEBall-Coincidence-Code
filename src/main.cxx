@@ -60,6 +60,7 @@ extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
+extern std::vector<std::vector<double> > dSiLiRunCorr; //Run Correction Coefficients
 
 std::vector<std::vector<double> > dGeBounds; //bounds for cuts
 std::vector<std::vector<double> > dSiLiBounds; //bounds for cuts
@@ -81,6 +82,7 @@ int main(int argc, char* argv[]) //Order of arguments: run #, output filename, c
 	makeChain(nRunNum); //From Filelist.cxx
 	defineGeCoeff(); //From Coefficients.cxx
 	defineGeCoeff(nRunNum); //From Coefficients.cxx, correction terms
+	defineSiLiCoeff(); //From Coefficients.cxx
 	defineSiLiCoeff(nRunNum);  //From Coefficients.cxx
 	sprintf(buffer,"GeCut_%s.dat",sCut); //File name to input
 	nGeConstraints = defineConstraints(buffer,dGeBounds); //From constraints.cxx

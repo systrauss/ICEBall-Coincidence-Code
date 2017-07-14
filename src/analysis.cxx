@@ -36,6 +36,7 @@ extern int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 extern int nSiLiDets; //Total number of signals from SiLi
 extern int nSiLiPlace; //Start of SiLis in generalized array detectors
 extern std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
+extern std::vector<std::vector<double> > dSiLiRunCorr; //Run Correction Coefficients
 
 //From Constraints.cxx
 extern std::vector<std::vector<double> > dGeBounds; //bounds for cuts
@@ -123,7 +124,7 @@ void analysis::Loop(const char* fileName, int nRunNum)
          if(eneC > dGeCorrection[i][2]) eneC = eneC - dGeCorrection[i][0]+eneC*dGeCorrection[i][1];*/
           //This is the residual sawtooth function.
          eneC = eneC+dGeCoeffRes[i][0]*dADC+dGeCoeffRes[i][1]*TMath::Erfc((dADC-dGeCoeffRes[i][2])/dGeCoeffRes[i][6])+dGeCoeffRes[i][3]*TMath::Erf((dADC-dGeCoeffRes[i][2])/dGeCoeffRes[i][6])*TMath::Erfc((dADC-dGeCoeffRes[i][4])/dGeCoeffRes[i][6])+dGeCoeffRes[i][5]*TMath::Erf((dADC-dGeCoeffRes[i][4])/dGeCoeffRes[i][6]);
-         eneC = dGeRunCorr[i][0]+dGeRunCorr[i][0]*eneC; //Run correction factor
+         eneC = dGeRunCorr[i][0]+dGeRunCorr[i][1]*eneC; //Run correction factor
          if(i%nGeSegments!=0 && i!=14 && i!=15) 
          {
             dGeEn[i/nGeSegments] = dGeEn[i/nGeSegments]+eneC; //Add energies
@@ -142,6 +143,7 @@ void analysis::Loop(const char* fileName, int nRunNum)
          {
             dSiLiEn[i] = dSiLiEn[i] + dSiLiCoefficients[i][j]*pow(dADC,j);
          }
+         dSiLiEn[i] = dSiLiRunCorr[i][0]+dSiLiRunCorr[i][1]*dSiLiEn[i]; //Run-by-run correction
       }
       for(int i=0 ; i < nBGODets ; i++)
       {

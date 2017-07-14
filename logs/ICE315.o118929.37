@@ -1,0 +1,205 @@
+ModuleCmd_Load.c(208):ERROR:105: Unable to locate a modulefile for 'radware'
+6.02/05
+start task 37
+Thu Jul 13 18:57:25 EDT 2017
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-00.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-01.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-03.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-04.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-05.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-06.root	0
+SiLi run file did not open, setting correction to y=x
+..................................Error in <TFile::ReadBuffer>: error reading all requested bytes from file /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root, got 9645685 of 16016759
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:396673652, branch:ene, entry:6466878, badread=1, nerrors=1, basketnumber=12168
+.R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284255, badread=1, nerrors=2, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284256, badread=1, nerrors=3, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284257, badread=1, nerrors=4, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284258, badread=1, nerrors=5, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284259, badread=1, nerrors=6, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284260, badread=1, nerrors=7, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284261, badread=1, nerrors=8, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284262, badread=1, nerrors=9, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0037-02.root at byte:528459497, branch:timecfd, entry:7284263, badread=1, nerrors=10, basketnumber=12415
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680
+R__unzip: error -3 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 89396, fKeylen = 72, fObjlen = 3199680, noutot = 0, nout=0, nin=89324, nbuf=3199680

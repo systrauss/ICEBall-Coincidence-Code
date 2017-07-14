@@ -11,6 +11,8 @@ void defineGeCoeff();
 
 void defineGeCoeff(int nRunNum);
 
+void defineSiLiCoeff();
+
 void defineSiLiCoeff(int nRunNum);
 
 #endif

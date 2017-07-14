@@ -20,7 +20,7 @@ std::vector<double> dBGOThreshold;
 int defineConstraints(char* cCuts, std::vector<std::vector<double> > &dBounds)
 {
    //First thing: read in the cuts for this run.
-   fstream fCuts(Form("user/%s",cCuts)); //Coefficient File
+   fstream fCuts(Form("user/Cut_Files/%s",cCuts)); //Coefficient File
    if(!fCuts.is_open())
    {
       cout << "Cuts file did not open" << endl;

@@ -1,0 +1,33 @@
+ModuleCmd_Load.c(208):ERROR:105: Unable to locate a modulefile for 'radware'
+6.02/05
+start task 49
+Thu Jul 13 18:57:25 EDT 2017
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-00.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-01.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-03.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-04.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-05.root	1
+/afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-06.root	0
+SiLi run file did not open, setting correction to y=x
+.................................Error in <TFile::ReadBuffer>: error reading all requested bytes from file /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root, got 1697840 of 8128841
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:323601284, branch:ene, entry:5104440, badread=1, nerrors=1, basketnumber=11754
+.R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375228, badread=1, nerrors=2, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375229, badread=1, nerrors=3, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375230, badread=1, nerrors=4, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375231, badread=1, nerrors=5, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375232, badread=1, nerrors=6, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)
+Error in <TBasket::ReadBasketBuffers>: fNbytes = 58070, fKeylen = 68, fObjlen = 3198720, noutot = 0, nout=0, nin=58002, nbuf=3198720
+Error in <TBranch::GetBasket>: File: /afs/crc.nd.edu/group/nsl/nuc/users/sstrauss/iceball_mar2016/rootfiles/run0049-02.root at byte:463443686, branch:ene, entry:6375233, badread=1, nerrors=7, basketnumber=12138
+R__unzip: error -5 in inflate (zlib)

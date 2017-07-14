@@ -24,6 +24,7 @@ int nSiLiOrder; //Order of calibration i.e. 1 = linear.
 int nSiLiDets; //Total number of signals from SiLi
 int nSiLiPlace; //Start of SiLis in generalized array detectors
 std::vector<std::vector<double> > dSiLiCoefficients; //Coefficients
+std::vector<std::vector<double> > dSiLiRunCorr; //Run Correction Coefficients
 
 void defineGeCoeff() //Get Ge coefficients. Does not include run-by-run corrections
 {
@@ -71,10 +72,17 @@ void defineGeCoeff() //Get Ge coefficients. Does not include run-by-run correcti
 void defineGeCoeff(int nRunNum) //Ge Coefficients for the run based corrections.
 {
    //First thing: read in the coefficients for this run.
-   fstream fCoeff(Form("user/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   fstream fCoeff(Form("user/Run_by_Run/GeCoefficients_r%i.dat",nRunNum)); //Coefficient File
    if(!fCoeff.is_open())
    {
-      cout << "Ge run file did not open" << endl;
+      cout << "Ge run file did not open, setting correction to y=x" << endl;
+      std::vector<double> row; //Row for adding a level in.
+      for(int i=0; i<nGeDets;i++)
+      {
+          dGeRunCorr.push_back(row);
+          dGeRunCorr[i].push_back(0);
+          dGeRunCorr[i].push_back(1);
+      }
       return;
    }
    string buffer;
@@ -94,10 +102,10 @@ void defineGeCoeff(int nRunNum) //Ge Coefficients for the run based corrections.
    fCoeff.close(); //Close the coefficients file
 }
 
-void defineSiLiCoeff(int nRunNum)
+void defineSiLiCoeff() //Get SiLi coefficients. Does not include run-by-run corrections
 {
    //First thing: read in the coefficients for this run.
-   fstream fCoeff(Form("user/SiLiCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   fstream fCoeff("user/SiLiCoefficients.dat"); //Coefficient File
    if(!fCoeff.is_open())
    {
       cout << "SiLi file did not open" << endl;
@@ -123,4 +131,38 @@ void defineSiLiCoeff(int nRunNum)
          buffer = buffer.substr(buffer.find_first_of(',',0)+1,buffer.find_first_of('\n',0)); //make a substring of the rest of the coefficients
       }
    }
+   fCoeff.close(); //Close the coefficients file
+}
+
+void defineSiLiCoeff(int nRunNum) //SiLi Coefficients for the run based correction
+{
+   //First thing: read in the coefficients for this run.
+   fstream fCoeff(Form("user/Run_by_Run/SiLiCoefficients_r%i.dat",nRunNum)); //Coefficient File
+   if(!fCoeff.is_open())
+   {
+      cout << "SiLi run file did not open, setting correction to y=x" << endl;
+      std::vector<double> row; //Row for adding a level in.
+      for(int i=0; i<nSiLiDets;i++)
+      {
+          dSiLiRunCorr.push_back(row);
+          dSiLiRunCorr[i].push_back(0);
+          dSiLiRunCorr[i].push_back(1);
+      }
+      return;
+   }
+   string buffer;
+   std::getline(fCoeff,buffer); //Label
+   std::vector<double> row; //Row for adding a level in.
+   //Okay, here, we get into the nitty gritty
+   for(int i=0; i<nSiLiDets;i++) //Loop through all the detectors
+   {
+      getline (fCoeff,buffer); //Line with coefficients on it.
+      dSiLiRunCorr.push_back(row); //Put a new row in for the detector
+      for(int j=0; j<= 1; j++) //Loop through the coefficients, assuming linear 
+      {
+         dSiLiRunCorr[i].push_back(std::atof(buffer.substr(0,buffer.find_first_of(',',0)).c_str())); //read in jth coefficient
+         buffer = buffer.substr(buffer.find_first_of(',',0)+1,buffer.find_first_of('\n',0)); //make a substring of the rest of the coefficients
+      }
+   }
+   fCoeff.close(); //Close the coefficients file
 }

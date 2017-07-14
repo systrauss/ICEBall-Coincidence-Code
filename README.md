@@ -35,3 +35,9 @@ Still to do:
 Actually, we need to get those coefficients...will use run 18 as a test case.
 
 *Should add a redundancy check to make sure y=x is default if run file doesn't open/exist*
+
+### 7/13/2017
+
+Adding in the redundancy check now.
+
+Also found an error in the use of the run correction. Now fixed.
